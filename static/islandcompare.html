@@ -213,16 +213,14 @@
                 }
                 // Set the root of the tree
                 container.newickRoot = container.newickData;
-                var reg = /^##sequence-region ([^ ]+) [^ ]+ ([^ \n]+)/mg;
-                var seq;
-                while (seq = reg.exec(chunk)) {
-                    container.backbone.addSequence(seq[1], Number(seq[2]), seq[1], seq[1]);
-                }
+                //var reg = /^##sequence-region ([^ ]+) [^ ]+ ([^ \n]+)/mg;
+                //var seq;
+                //while (seq = reg.exec(chunk)) {
+                //    container.backbone.addSequence(seq[1], Number(seq[2]), seq[1], seq[1]);
+                //}
 
                 // Traverse tree to find sequence id order
                 treeOrder = container.traverseTreeForOrder(container.newickRoot);
-
-                container.sequenceOrder = container.backbone.getIndicesFromIds(treeOrder);
 
                 return chunk.replace(/^#.*\n/mg, '');
             },
@@ -233,7 +231,7 @@
                 let sequence = null;
                 switch (row[2]) {
                     case 'sequence':
-                        let userid = /userid=([^;\n]+)/.exec(row[8]);
+                        let userid = /userid=([^;\n]+)/.exec(row[8]); // The user provided identifier (file name)
                         userid = userid ? userid[1] : row[0];
                         let seqname = /Name=([^;\n]+)/.exec(row[8]);
                         seqname = seqname ? seqname[1] : row[0];
@@ -292,30 +290,33 @@
                         }
                         break;
                     case 'gene':
-                    case 'pseudogene':
                         if (row[1] === "RGI-CARD") {
                             //Add AMR
                             sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
                             if (!sequence) sequence = container.backbone.addSequence(row[0]);
                             sequence.addAMR([{start: row[3], end: row[4], strand: row[6]}]);
-                        } else {
-                            //Add gene
-                            var name = /Name=([^;\n]+)/.exec(row[8]);
-                            name = name ? name[1] : "";
-                            var gene_type = /Type=([^;\n]+)/.exec(row[8]);
-                            gene_type = gene_type ? gene_type[1] : "";
-                            var locus_tag = /locus_tag=([^;\n]+)/.exec(row[8]);
-                            locus_tag = locus_tag ? locus_tag[1] : "";
-                            var product = /product=([^;\n]+)/.exec(row[8]);
-                            product = product ? product[1] : "";
-                            sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
-                            if (!sequence) sequence = container.backbone.addSequence(row[0]);
-                            sequence.addGene({start: row[3], end: row[4], strand: row[6], gene: name, locus_tag: locus_tag, product: product, type: gene_type});
                         }
+                        break;
+                    case 'CDS':
+                    case 'tRNA':
+                    case 'rRNA':
+                        //Add gene
+                        var name = /gene=([^;\n]+)/.exec(row[8]);
+                        name = name ? name[1] : "";
+                        //var gene_type = /Type=([^;\n]+)/.exec(row[8]);
+                        var gene_type = row[2]; //gene_type ? gene_type[1] : "";
+                        var locus_tag = /locus_tag=([^;\n]+)/.exec(row[8]);
+                        locus_tag = locus_tag ? locus_tag[1] : "";
+                        var product = /product=([^;\n]+)/.exec(row[8]);
+                        product = product ? product[1] : "";
+                        sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
+                        if (!sequence) sequence = container.backbone.addSequence(row[0]);
+                        sequence.addGene({start: row[3], end: row[4], strand: row[6], gene: name, locus_tag: locus_tag, product: product, type: gene_type});
                         break;
                 }
             },
             complete: function() {
+                container.sequenceOrder = container.backbone.getIndicesFromIds(treeOrder);
                 // at this scale, individual scaling for sequences may not be usable...so used fixed scale
                 for (currentSeq of container.backbone.getSequences())
                     currentSeq.updateScale(0, container.getLargestSequenceSize(), container.getLargestSequenceSize());
