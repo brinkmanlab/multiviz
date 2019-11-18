@@ -44,10 +44,10 @@
                 <div class="col-xs-5">
                     <div id="btn-div" class="clearfix btn-group btn-group-sm">
                         <button id="toggleBranchLength" class="btn btn-primary btn-flat">Toggle Branches</button>
+                        <button id="printerColors" class="btn btn-primary btn-flat" style="margin-left: 0px;">Toggle Colour</button>
+                        <button id="resetRange" class="btn btn-primary btn-flat">Reset Zoom</button>
                         <button id="resetTree" class="btn btn-primary btn-flat" title="Resets the tree to show all clades. Use reset zoom to also reset to the full view.">Reset Tree</button>
-                        <button id="resetGIs" class="btn btn-primary btn-flat clusterButton" style="display: none;">
-                            Reset GIs
-                        </button>
+                        <button id="resetGIs" class="btn btn-primary btn-flat clusterButton" style="display: none;">Reset GIs</button>
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-primary btn-flat dropdown-toggle" data-toggle="dropdown">
                                 Save image <span class="caret"></span>
@@ -57,11 +57,7 @@
                                 <li><a class="dropdown-item" id="savePng" href="#">png</a></li>
                             </ul>
                         </div>
-                        <button id="printerColors" class="btn btn-primary btn-flat" style="margin-left: 0px;">Toggle Colour</button>
-                        <button id="resetRange" class="btn btn-primary btn-flat">Reset Zoom</button>
-                        <button id="zoomCluster" class="btn btn-primary btn-flat clusterButton" style="display: none;">
-                            Zoom to Cluster
-                        </button>
+                        <button id="zoomCluster" class="btn btn-primary btn-flat clusterButton" style="display: none;">Zoom to Cluster</button>
                     </div>
                     <div id="tips"><span class="clearfix"><span style="font-weight: bold;">Tips:</span> Select a node of a tree to show only that clade. Click and drag over a genomic region to zoom in. Select a genomic island to view its cluster (note that the default is islands are coloured by cluster). Hover over genes to see the annotation. Share this analysis with the URL above.</span></div>
                 </div>
