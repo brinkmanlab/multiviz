@@ -45,16 +45,18 @@
                     <div id="btn-div" class="clearfix btn-group btn-group-sm">
                         <button id="toggleBranchLength" class="btn btn-primary btn-flat">Toggle Branches</button>
                         <button id="printerColors" class="btn btn-primary btn-flat" style="margin-left: 0px;">Toggle Colour</button>
+                        <button id="toggleIdentifiers" class="btn btn-primary btn-flat" style="margin-left: 0px;">Toggle Identifiers</button>
                         <button id="resetRange" class="btn btn-primary btn-flat">Reset Zoom</button>
                         <button id="resetTree" class="btn btn-primary btn-flat" title="Resets the tree to show all clades. Use reset zoom to also reset to the full view.">Reset Tree</button>
                         <button id="resetGIs" class="btn btn-primary btn-flat clusterButton" style="display: none;">Reset GIs</button>
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-primary btn-flat dropdown-toggle" data-toggle="dropdown">
-                                Save image <span class="caret"></span>
+                                Save <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" id="saveSvg" href="#">svg</a></li>
-                                <li><a class="dropdown-item" id="savePng" href="#">png</a></li>
+                                <li><a class="dropdown-item" id="saveGff" href="#">Data (gff3)</a></li>
+                                <li><a class="dropdown-item" id="saveSvg" href="#">Image (svg)</a></li>
+                                <li><a class="dropdown-item" id="savePng" href="#">Image (png)</a></li>
                             </ul>
                         </div>
                         <button id="zoomCluster" class="btn btn-primary btn-flat clusterButton" style="display: none;">Zoom to Cluster</button>
@@ -83,6 +85,11 @@
                             <span id="islandpathToggle">
                                 <label>
                                     <input type="checkbox" name="islandpath" value="islandpath" id="islandpath-box" checked disabled>IslandPath
+                                </label>
+                            </span>
+                            <span id="blastToggle">
+                                <label>
+                                    <input type="checkbox" name="blast" value="blast" id="blast-box" checked disabled>BLAST
                                 </label>
                             </span>
                         </div>
@@ -145,6 +152,12 @@
                             </svg>
                             IslandPath Genomic Island
                         </span>
+                        <span id="blastLegend" class="legendText">
+                            <svg height="10" width="10">
+                                <rect x="1" y="1" width="8" height="8" stroke-width="1"></rect>
+                            </svg>
+                            BLAST Genomic Island
+                        </span>
 
                     </div>
                     <div id="clusterLegend" class="clearfix" hidden>
@@ -188,13 +201,14 @@
 </section>
 
 <script>
+    const src = (new URLSearchParams(location.search)).get('src');
     $(document).ready(function() {
         //let Galaxy = getGalaxyInstance();
         //Galaxy.data.dialog(function(url){alert(url)})
         var container = new MultiVis("#visualization-body");
 
         var treeOrder;
-        var parser = Papa.parse((new URLSearchParams(location.search)).get('src'), {
+        var parser = Papa.parse(src, {
             download: true,
             delimiter: "\t",
             worker: false,
@@ -227,16 +241,16 @@
                 let sequence = null;
                 switch (row[2]) {
                     case 'sequence':
-                        let userid = /userid=([^;\n]+)/.exec(row[8]); // The user provided identifier (file name)
-                        userid = userid ? userid[1] : row[0];
+                        let shownName = /userid=([^;\n]+)/.exec(row[8]); // The user provided identifier (file name)
+                        shownName = shownName ? shownName[1] : row[0];
                         let seqname = /Name=([^;\n]+)/.exec(row[8]);
                         seqname = seqname ? seqname[1] : row[0];
                         sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
                         if (!sequence) {
-                            container.backbone.addSequence(row[0], row[4], seqname, userid);
+                            container.backbone.addSequence(row[0], row[4], seqname, shownName);
                         } else {
                             sequence.name = seqname;
-                            sequence.shownName = userid;
+                            sequence.shownName = shownName;
                             sequence.sequenceSize = row[4];
                         }
                         break;
@@ -249,6 +263,9 @@
                                 break;
                             case 'islandpath':
                                 program = 'islandpath';
+                                break;
+                            case 'blast':
+                                program = 'blast';
                                 break;
                             default:
                                 program = 'merged';
@@ -371,11 +388,27 @@
                     $("#amrLegend").attr("class", "#amrLegend");
                 }
             });
+            $("#toggleIdentifiers").on("click", this, function() {
+                container.shownName = !container.shownName;
+                container.render();
+            });
             $("#saveSvg").on("click", this, function() {
                 container.saveImage("svg");
             });
             $("#savePng").on("click", this, function() {
                 container.saveImage("png");
+            });
+            $("#saveGff").on("click", this, function() {
+                try {
+                    saveAs(src, "Analysis.gff3"); // Fails on newer browsers, waiting for fix
+                } catch (e) {
+                    link = document.createElement("a");
+                    link.setAttribute("href", src);
+                    link.setAttribute("type", "application/octet-stream");
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("download", "Analysis.gff3");
+                    link.click();
+                }
             });
             $("#resetGIs").on("click", this, function() {
                 container.toggleClusterView(container.cluster, null);

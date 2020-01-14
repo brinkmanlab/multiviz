@@ -32,6 +32,7 @@ function MultiVis(targetNode){
     this.newickRoot = null;
     this.trueBranchLengths = false;
     this.cluster = null;
+    this.shownName = true;
 
     this.toggleTrueBranchLengths = function(){
         this.trueBranchLengths = !this.trueBranchLengths;
@@ -365,7 +366,7 @@ function MultiVis(targetNode){
                 .data(Object.keys(seqData.gi))
                 .enter().append("g")
                 .attr("class", function(method) {
-                    return method; //This assigns the tool used to generate [sigi, islandpath, merged]
+                    return method; //This assigns the tool used to generate [sigi, islandpath, merged, blast]
                 });
             methods.each(function(method) {
                 d3.select(this).selectAll("polygon")
@@ -551,7 +552,7 @@ function MultiVis(targetNode){
 
         //Add SVG Text Element Attributes
         var textLabels = text.attr("y", function(d,i){ return (i)*self.getSequenceModHeight()})
-            .text(function(d){return d.shownName});
+            .text(function(d){return self.shownName ? d.shownName : d.sequenceName});
 
         // Shorten long genbank file names that extend into the visContainer
         text.each(function() {
@@ -611,6 +612,11 @@ function MultiVis(targetNode){
             $(".islandpath").show();
         } else {
             $(".islandpath").hide();
+        }
+        if ($(".GIColourBody :checkbox[name=blast]").is(":checked")) {
+            $(".blast").show();
+        } else {
+            $(".blast").hide();
         }
     };
 

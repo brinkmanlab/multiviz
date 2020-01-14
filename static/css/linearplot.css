@@ -171,6 +171,10 @@ g.root.node circle{
     fill: blue !important;
 }
 
+.blast, #blastLegend{
+    fill: #508714 !important;
+}
+
 .GIColourBody label{
     margin: 2px;
 }
