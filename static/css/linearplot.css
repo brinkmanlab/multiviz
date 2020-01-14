@@ -187,3 +187,8 @@ g.root.node circle{
     white-space: nowrap;
     margin-right: 5px;
 }
+
+.btn-primary {
+    background: #6497b1 !important;
+    border-color: #6497b1 !important;
+}
