@@ -1,6 +1,11 @@
 //Dependencies: jQuery, D3.js, d3.phylogram.js, newick.js, linearplot.css (for styling)
+import { saveAs } from 'file-saver';
+import 'blueimp-canvas-to-blob'
+import './d3.phylogram'
+import createClusterVisualization from './clustervis'
 
-function MultiVis(targetNode){
+
+export default function MultiVis(targetNode){
     var self = this;
     const TOPPADDING = 24;
     const SEQUENCEHEIGHT = 20;
@@ -793,11 +798,10 @@ function MultiVis(targetNode){
 
         clusterDict.alignment = multiVis.backbone.backbone;
 
-        var clusterPage = open("cluster.html");
-        clusterPage.onload = ()=>{
-            clusterPage.createClusterVisualization(clusterDict);
-        };
-
+        const clusterPage = open();
+        const clusterDoc = clusterPage.document;
+        clusterPage.createClusterVisualization = ()=>createClusterVisualization(clusterDoc, clusterDict);
+        clusterDoc.write(`<html>${document.head.outerHTML}<body>${document.getElementById('clustervis').innerHTML}<script>window.createClusterVisualization()<\\/script></body></html>`);
     };
 
     return this;
@@ -821,7 +825,7 @@ function Backbone() {
 
     this.getIndicesFromIds = function(ids) {
         let indices = [];
-        for (id of ids) {
+        for (const id of ids) {
             for (var seq_i = 0; seq_i < this.sequences.length; seq_i++) {
                 if (id === this.sequences[seq_i].sequenceId) {
                     indices.push(seq_i);
@@ -835,7 +839,7 @@ function Backbone() {
     this.addSequence = function (sequenceId, sequenceSize, sequenceName, givenName) {
         sequenceName = sequenceName || null;
         givenName = givenName || null;
-        seq = new Sequence(sequenceId, sequenceSize, sequenceName, givenName);
+        const seq = new Sequence(sequenceId, sequenceSize, sequenceName, givenName);
         this.sequences.push(seq);
         return seq
     };
@@ -864,63 +868,6 @@ function Backbone() {
             return homologousRegions;
         }
     };
-
-    // retrieve json from server and render
-    this.retrieveJsonAndRender = function (multiVis, url, geneUrl) {
-        var backbonereference = this;
-        $.ajax({
-            url: url,
-            success: function (data) {
-                for (var genomeIndex = 0; genomeIndex < data['genomes'].length; genomeIndex++) {
-                    var currentseq = backbonereference.addSequence(genomeIndex, data['genomes'][genomeIndex]['length'],
-                        data['genomes'][genomeIndex]['name'], data['genomes'][genomeIndex]['givenName']);
-                    // Add GIs to appropriate sequence
-                    for (var giIndex = 0; giIndex < data['genomes'][genomeIndex]['gis'].length; giIndex++) {
-                        currentseq.addGI(data['genomes'][genomeIndex]['gis'][giIndex]);
-                    }
-                    // Add genes to appropriate sequence
-                    for (var geneIndex = 0; geneIndex < data['genomes'][genomeIndex]['genes'].length; geneIndex++) {
-                        currentseq.addGene(data['genomes'][genomeIndex]['genes'][geneIndex]);
-                    }
-                    // at this scale, individual scaling for sequences may not be usable...so used fixed scale
-                    currentseq.updateScale(0, multiVis.getLargestSequenceSize(), multiVis.getLargestSequenceSize());
-                }
-
-                for (var sequenceIndex = 0; sequenceIndex < Object.keys(data['backbone']).length; sequenceIndex++) {
-                    for (var regionIndex = 0; regionIndex < data['backbone'][Object.keys(data['backbone'])[sequenceIndex]].length; regionIndex++) {
-                        backbonereference.addHomologousRegion(parseInt(Object.keys(data['backbone'])[sequenceIndex]), parseInt(Object.keys(data['backbone'])[sequenceIndex]) + 1,
-                            data['backbone'][Object.keys(data['backbone'])[sequenceIndex]][regionIndex][0][0],
-                            data['backbone'][Object.keys(data['backbone'])[sequenceIndex]][regionIndex][0][1],
-                            data['backbone'][Object.keys(data['backbone'])[sequenceIndex]][regionIndex][1][0],
-                            data['backbone'][Object.keys(data['backbone'])[sequenceIndex]][regionIndex][1][1]);
-                    }
-                }
-                multiVis.newickData = Newick.parse(data['newick']);
-                multiVis.newickRoot = multiVis.newickData;
-                // if a gene end point is given then retrieve it async
-                if (geneUrl != null) {
-                    backbonereference.retrieveGeneDataAsync(geneUrl);
-                }
-                multiVis.render();
-            }
-        })
-    };
-
-    //load gene data
-    this.retrieveGeneDataAsync = function (url) {
-        var backbonereference = this;
-        $.ajax({
-            url: url,
-            success: function (data) {
-                for (var genomeIndex = 0; genomeIndex < backbonereference.sequences.length; genomeIndex++) {
-                    var genomeName = backbonereference.sequences[genomeIndex].sequenceName;
-                    for (var geneIndex = 0; geneIndex < data[genomeName].length; geneIndex++) {
-                        backbonereference.sequences[genomeIndex].addGene(data[genomeName][geneIndex]);
-                    }
-                }
-            }
-        });
-    };
 }
 
 // Object that holds homologous regions
@@ -932,14 +879,14 @@ function HomologousRegion(start1,end1,start2,end2){
 
     // Negative numbers are inversions so remove negative and swap start and end points
     if (this.start1 < 0){
-        memory = this.start1;
+        const memory = this.start1;
         this.start1=this.end1*-1;
         this.end1=memory*-1;
     }
 
     // Negative numbers are inversions so remove negative and swap start and end points
     if (this.start2 < 0){
-        memory = this.start2;
+        const memory = this.start2;
         this.start2=this.end2*-1;
         this.end2 = memory*-1;
     }

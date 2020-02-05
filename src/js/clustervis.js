@@ -1,26 +1,24 @@
-function createClusterVisualization(clusterDict) {
+import d3 from './d3.min'
+
+export default function createClusterVisualization(context, clusterDict) {
     var SEQSTART = 115; // Islands will begin at this horizontal distance from the left - makes room for position.
     var SVGPADDING = 30; // Accounts for padding of each div
     var SEQPADDING = 25; // Vertical distance between each island in a genome
     var TEXTOFFSET = 15; // Adjustment to align position text with island
     var RECTHEIGHT = 10; // Height of the island rect elements
 
-    /*var clusterDict = window.clusterDict;
-    if (clusterDict === undefined) {
-        clusterDict = JSON.parse(sessionStorage.getItem("clusterDict"));
-    } else {
-        // Store the clusterDict so it can be retrieved if the page is refreshed
-        sessionStorage.setItem("clusterDict", JSON.stringify(clusterDict));
-    }
-    */
+    // Create a new root selection from the context object
+    const d3_root = d3.select(context.documentElement); //new Selection();
+
     var cluster = clusterDict.cluster;
-    $("#header").html("Cluster " + cluster);
+    $("#header", context).html("Cluster " + cluster);
     var color = clusterDict.color;
-    var visWidth = $("#visualizationBody").width();
+    var visWidth = $("#visualizationBody", context).width();
+
     var scale = getScale(clusterDict.sequences, visWidth - SVGPADDING - SEQSTART);
 
     // D3.js //
-    var seq = d3.select("#visualizationBody")
+    var seq = d3_root.select("#visualizationBody")
         .selectAll("div")
         .data(clusterDict.sequences);
 

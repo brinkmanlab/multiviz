@@ -1,0 +1,19 @@
+{
+  "name": "multiviz",
+  "version": "1.0.0",
+  "repository": "https://github.com/brinkmanlab/multiviz",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build --public-url . --no-source-maps --no-minify src/index.html",
+    "postbuild": "cp ./dist/index.html ./galaxy/templates/islandcompare.mako"
+  },
+  "dependencies": {
+    "blueimp-canvas-to-blob": "^3.14.0",
+    "file-saver": "^2.0.2",
+    "papaparse": "^5.1.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-inliner": "^1.0.10"
+  }
+}

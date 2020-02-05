@@ -140,7 +140,7 @@ g.root.node circle{
     padding: 3px;
 }
 
-#GITitle, #legendTitle {
+#GITitle, .legendTitle {
     margin-top: 2px;
     padding-right: 0.5em;
     text-align: right;
