@@ -10,7 +10,7 @@
   "dependencies": {
     "blueimp-canvas-to-blob": "^3.14.0",
     "file-saver": "^2.0.2",
-    "papaparse": "^5.1.1"
+    "papaparse": "^5.2.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
