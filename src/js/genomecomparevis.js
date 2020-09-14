@@ -250,9 +250,8 @@ export default function MultiVis(targetNode){
             var treeContainer = svg.append("g")
                 .attr("class", "treeContainer")
                 .attr("width", TREECONTAINERWIDTH)
-                .css("width", TREECONTAINERWIDTH)
                 .attr("height", this.containerHeight())
-                .css("height", this.containerHeight())
+                .attr("style", `width: ${TREECONTAINERWIDTH}; height: ${this.containerHeight()}`)
                 .attr("transform", "translate(" + 0 + "," + (this.getTreeModPadding()) + ")");
 
             // Add the tree and listeners to the visualization

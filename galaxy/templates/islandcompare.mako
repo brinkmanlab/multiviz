@@ -15414,7 +15414,7 @@ function MultiVis(targetNode) {
 
     if (self.newickRoot != null) {
       //Add the tree visualization container
-      var treeContainer = svg.append("g").attr("class", "treeContainer").attr("width", TREECONTAINERWIDTH).css("width", TREECONTAINERWIDTH).attr("height", this.containerHeight()).css("height", this.containerHeight()).attr("transform", "translate(" + 0 + "," + this.getTreeModPadding() + ")"); // Add the tree and listeners to the visualization
+      var treeContainer = svg.append("g").attr("class", "treeContainer").attr("width", TREECONTAINERWIDTH).attr("height", this.containerHeight()).attr("style", "width: ".concat(TREECONTAINERWIDTH, "; height: ").concat(this.containerHeight())).attr("transform", "translate(" + 0 + "," + this.getTreeModPadding() + ")"); // Add the tree and listeners to the visualization
 
       d3.phylogram.build('.treeContainer', self.newickRoot, {
         width: TREECONTAINERWIDTH,
