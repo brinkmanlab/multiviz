@@ -202,6 +202,17 @@ g.root.node circle{
     background: #6497b1 !important;
     border-color: #6497b1 !important;
 }
+
+#upload_box {
+    text-align: center;
+    margin-top: 2em;
+}
+
+#visualization-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -347,6 +358,10 @@ g.root.node circle{
         <div class="box-body">
             <div id="visualization-body">
                 <h1 id="loading" class="text-center"><i class="fa fa-spinner fa-spin"></i> Loading results</h1>
+                <div id="upload_box" hidden="">
+                    <label for="upload">Choose a results dataset to visualize:</label>
+                    <input type="file" id="upload" accept=".gff3">
+                </div>
             </div>
             <svg>
                 <filter id="shadow" x="-5" y="-5" width="200" height="200">
@@ -16232,6 +16247,16 @@ $(document).ready(function () {
   var injected_data = document.getElementById('injected_data').textContent; // Allow specifying full src path in query or fall back to galaxy dataset path
 
   var src = injected_data && atob(injected_data) || query.get('src') || dataset_id && "/datasets/".concat(dataset_id, "/display");
+  if (src) loadVis(src);else {
+    $("#loading").hide();
+    $("#upload_box").show().on('change', function (event) {
+      loadVis((event.dataTransfer ? event.dataTransfer.files : event.target.files)[0]);
+      $("#upload_box").hide();
+    });
+  }
+});
+
+function loadVis(src) {
   var container = new _genomecomparevis.default("#visualization-body");
   var treeOrder;
 
@@ -16512,7 +16537,7 @@ $(document).ready(function () {
 
     var buttons = $("#btn-div").children(); //buttons.width(buttons.width());
   });
-});
+}
 },{"./assign-globals":"EVyK","../bootstrap/js/bootstrap.min":"uJ6i","papaparse":"xjhN","./genomecomparevis":"DFEd","./newick":"E8a9"}]},{},["d6sW"], null)</script>
 
 <section id="clustervis" hidden="">

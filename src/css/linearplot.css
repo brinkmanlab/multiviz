@@ -192,3 +192,14 @@ g.root.node circle{
     background: #6497b1 !important;
     border-color: #6497b1 !important;
 }
+
+#upload_box {
+    text-align: center;
+    margin-top: 2em;
+}
+
+#visualization-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

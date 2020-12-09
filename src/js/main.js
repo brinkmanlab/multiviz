@@ -12,6 +12,17 @@ $(document).ready(function() {
     // Allow specifying full src path in query or fall back to galaxy dataset path
     const src = (injected_data && atob(injected_data)) || query.get('src') || (dataset_id && `/datasets/${dataset_id}/display`);
 
+    if (src) loadVis(src);
+    else {
+        $("#loading").hide();
+        $("#upload_box").show().on('change', function(event){
+            loadVis((event.dataTransfer ? event.dataTransfer.files : event.target.files)[0]);
+            $("#upload_box").hide();
+        });
+    }
+});
+
+function loadVis(src) {
     var container = new MultiVis("#visualization-body");
 
     var treeOrder;
@@ -20,7 +31,7 @@ $(document).ready(function() {
         delimiter: "\t",
         worker: false,
         skipEmptyLines: true,
-        beforeFirstChunk: function(chunk) {
+        beforeFirstChunk: function (chunk) {
             // Add the newick data to generate a tree
             let nwk = chunk.match(/^##newick: ([^\n]+)/m);
             if (nwk && nwk.length > 1) {
@@ -41,7 +52,7 @@ $(document).ready(function() {
 
             return chunk.replace(/^#.*\n/mg, '');
         },
-        step: function(results, parser) {
+        step: function (results, parser) {
             const row = results.data;
             row[3] = Number(row[3]);
             row[4] = Number(row[4]);
@@ -52,7 +63,7 @@ $(document).ready(function() {
                     shownName = shownName ? shownName[1] : row[0];
                     let seqname = /Name=([^;\n]+)/.exec(row[8]);
                     seqname = seqname ? seqname[1] : row[0];
-                    sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
+                    sequence = container.backbone.getSequences().find(seq => seq.sequenceId === row[0]);
                     if (!sequence) {
                         container.backbone.addSequence(row[0], row[4], seqname, shownName);
                     } else {
@@ -64,7 +75,7 @@ $(document).ready(function() {
                 case 'genomic_island':
                     //Add GI
                     var program;
-                    switch(row[1]) {
+                    switch (row[1]) {
                         case 'Colombo/SigiHMM':
                             program = 'sigi';
                             break;
@@ -84,9 +95,17 @@ $(document).ready(function() {
                     color = color ? color[1] : null;
                     let parent = /Parent=([^;\n]+)/.exec(row[8]);
                     parent = parent ? parent[1] : null;
-                    sequence = container.backbone.getSequences().find(function(seq){return seq.sequenceId === row[0];});
+                    sequence = container.backbone.getSequences().find(function (seq) {
+                        return seq.sequenceId === row[0];
+                    });
                     if (!sequence) sequence = container.backbone.addSequence(row[0]);
-                    sequence.addGI(program, {start:row[3], end:row[4], cluster: cluster, color: color, parent: parent});
+                    sequence.addGI(program, {
+                        start: row[3],
+                        end: row[4],
+                        cluster: cluster,
+                        color: color,
+                        parent: parent
+                    });
                     break;
                 case 'match':
                     //Add alignment
@@ -112,7 +131,7 @@ $(document).ready(function() {
                 case 'gene':
                     if (row[1] === "RGI-CARD") {
                         //Add AMR
-                        sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
+                        sequence = container.backbone.getSequences().find(seq => seq.sequenceId === row[0]);
                         if (!sequence) sequence = container.backbone.addSequence(row[0]);
                         sequence.addAMR([{start: row[3], end: row[4], strand: row[6]}]);
                     }
@@ -129,13 +148,21 @@ $(document).ready(function() {
                     locus_tag = locus_tag ? locus_tag[1] : "";
                     var product = /product=([^;\n]+)/.exec(row[8]);
                     product = product ? product[1] : "";
-                    sequence = container.backbone.getSequences().find(seq=>seq.sequenceId === row[0]);
+                    sequence = container.backbone.getSequences().find(seq => seq.sequenceId === row[0]);
                     if (!sequence) sequence = container.backbone.addSequence(row[0]);
-                    sequence.addGene({start: row[3], end: row[4], strand: row[6], gene: name, locus_tag: locus_tag, product: product, type: gene_type});
+                    sequence.addGene({
+                        start: row[3],
+                        end: row[4],
+                        strand: row[6],
+                        gene: name,
+                        locus_tag: locus_tag,
+                        product: product,
+                        type: gene_type
+                    });
                     break;
             }
         },
-        complete: function() {
+        complete: function () {
             container.sequenceOrder = container.backbone.getIndicesFromIds(treeOrder);
             // at this scale, individual scaling for sequences may not be usable...so used fixed scale
             for (const currentSeq of container.backbone.getSequences())
@@ -149,7 +176,7 @@ $(document).ready(function() {
             //this.container.on('resize', function(){
             //    self.transition();
             //});
-            $(window).on('resize', function(){
+            $(window).on('resize', function () {
                 container.resetAndRenderRange();
             });
         }
@@ -158,7 +185,7 @@ $(document).ready(function() {
     var isPrinterColors = false;
 
     // Add listeners to button controls
-    $(document).ready(function() {
+    $(document).ready(function () {
         //Button resets any tree zooming that was done
         $("#resetTree").on("click", this, function () {
             container.resetAndRenderGraph();
@@ -185,8 +212,7 @@ $(document).ready(function() {
                 $("#rRNALegend").attr("class", "#rRNALegend print");
                 $("#genomeLegend").attr("class", "#genomeLegend print");
                 $("#amrLegend").attr("class", "#amrLegend print");
-            }
-            else {
+            } else {
                 $("#genomicIslandLegend").attr("class", "#genomicIslandsLegend");
                 $("#genesLegend").attr("class", "#genesLegend");
                 $("#tRNALegend").attr("class", "#tRNALegend");
@@ -195,17 +221,17 @@ $(document).ready(function() {
                 $("#amrLegend").attr("class", "#amrLegend");
             }
         });
-        $("#toggleIdentifiers").on("click", this, function() {
+        $("#toggleIdentifiers").on("click", this, function () {
             container.shownName = !container.shownName;
             container.render();
         });
-        $("#saveSvg").on("click", this, function() {
+        $("#saveSvg").on("click", this, function () {
             container.saveImage("svg");
         });
-        $("#savePng").on("click", this, function() {
+        $("#savePng").on("click", this, function () {
             container.saveImage("png");
         });
-        $("#saveGff").on("click", this, function() {
+        $("#saveGff").on("click", this, function () {
             try {
                 saveAs(src, "Analysis.gff3"); // Fails on newer browsers, waiting for fix
                 // TODO download injected data
@@ -218,10 +244,10 @@ $(document).ready(function() {
                 link.click();
             }
         });
-        $("#resetGIs").on("click", this, function() {
+        $("#resetGIs").on("click", this, function () {
             container.toggleClusterView(container.cluster, null);
         });
-        $("#zoomCluster").on("click", this, function() {
+        $("#zoomCluster").on("click", this, function () {
             container.zoomCluster();
         });
         // Changes to sigi/islandpath checkboxes will hide/show corresponding GIs
@@ -232,4 +258,4 @@ $(document).ready(function() {
         var buttons = $("#btn-div").children();
         //buttons.width(buttons.width());
     });
-});
+}

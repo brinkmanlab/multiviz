@@ -32,7 +32,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Set style as well as attr for tree" />
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Set style as well as attr for tree using attr">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/linearplot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/linearplot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,6 +72,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -160,7 +166,8 @@
       <workItem from="1580767887176" duration="48000" />
       <workItem from="1580768000324" duration="4807000" />
       <workItem from="1580839731427" duration="23600000" />
-      <workItem from="1600125115696" duration="560000" />
+      <workItem from="1600125115696" duration="1597000" />
+      <workItem from="1607546983990" duration="2685000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -316,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600125395360</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Set style as well as attr for tree using attr">
+      <created>1600126102880</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1600126102880</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -385,33 +399,8 @@
     <MESSAGE value="Change button color" />
     <MESSAGE value="Refactor into single bundled html" />
     <MESSAGE value="Set style as well as attr for tree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set style as well as attr for tree" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1897" height="524" key="GridCell.Tab.0.bottom" timestamp="1600125288418">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state width="1897" height="524" key="GridCell.Tab.0.bottom/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125288418" />
-    <state width="1897" height="524" key="GridCell.Tab.0.center" timestamp="1600125288418">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state width="1897" height="524" key="GridCell.Tab.0.center/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125288418" />
-    <state width="1897" height="524" key="GridCell.Tab.0.left" timestamp="1600125288418">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state width="1897" height="524" key="GridCell.Tab.0.left/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125288418" />
-    <state width="1897" height="524" key="GridCell.Tab.0.right" timestamp="1600125288418">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state width="1897" height="524" key="GridCell.Tab.0.right/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125288418" />
-    <state x="456" y="1256" key="SettingsEditor" timestamp="1600125272759">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state x="456" y="1256" key="SettingsEditor/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125272759" />
-    <state x="555" y="1357" width="804" height="528" key="Vcs.Push.Dialog.v2" timestamp="1600125397163">
-      <screen x="0" y="1080" width="1920" height="1080" />
-    </state>
-    <state x="555" y="1357" width="804" height="528" key="Vcs.Push.Dialog.v2/0.37.1920.1043/0.1080.1920.1080@0.1080.1920.1080" timestamp="1600125397163" />
+    <MESSAGE value="Set style as well as attr for tree using attr" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set style as well as attr for tree using attr" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
