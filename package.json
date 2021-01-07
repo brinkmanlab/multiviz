@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build --public-url . --no-source-maps --no-minify src/index.html",
-    "postbuild": "cp ./dist/index.html ./galaxy/templates/islandcompare.mako"
+    "postbuild": "cp ./dist/index.html ./galaxy/static/"
   },
   "dependencies": {
     "blueimp-canvas-to-blob": "^3.14.0",
