@@ -32,11 +32,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Set style as well as attr for tree using attr">
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Add upload box">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/linearplot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/linearplot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/config/islandcompare.xml" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/config/islandcompare.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +165,8 @@
       <workItem from="1580768000324" duration="4807000" />
       <workItem from="1580839731427" duration="23600000" />
       <workItem from="1600125115696" duration="1597000" />
-      <workItem from="1607546983990" duration="2685000" />
+      <workItem from="1607546983990" duration="2937000" />
+      <workItem from="1609979282117" duration="608000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -330,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600126102880</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add upload box">
+      <created>1607549903895</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1607549903895</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -400,7 +406,8 @@
     <MESSAGE value="Refactor into single bundled html" />
     <MESSAGE value="Set style as well as attr for tree" />
     <MESSAGE value="Set style as well as attr for tree using attr" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set style as well as attr for tree using attr" />
+    <MESSAGE value="Add upload box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add upload box" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
