@@ -13,13 +13,29 @@ $(document).ready(function() {
     // Allow specifying full src path in query or fall back to galaxy dataset path
     const src = (injected_data && atob(injected_data)) || query.get('src') || (dataset_id && `/datasets/${dataset_id}/display`);
 
-    if (src) loadVis(src);
-    else {
-        $("#loading").hide();
-        $("#upload_box").show().on('change', function(event){
-            loadVis((event.dataTransfer ? event.dataTransfer.files : event.target.files)[0]);
-            $("#upload_box").hide();
-        });
+    if (!injected_data && query.has('src')) {
+        // Papaparse fails CORS, check preflight and compensate
+        fetch(query.get('src'), {
+            method: 'OPTIONS',
+        }).then(response=>{
+            if (response.ok) {
+                loadVis(src);
+            } else {
+                // Do 'simple' CORS request and pass result to papaparse
+                fetch(src).then(response=>response.blob().then(loadVis));
+            }
+        }).catch(reason => {
+            fetch(src).then(response=>response.blob().then(loadVis));
+        })
+    } else {
+        if (src) loadVis(src);
+        else {
+            $("#loading").hide();
+            $("#upload_box").show().on('change', function(event){
+                loadVis((event.dataTransfer ? event.dataTransfer.files : event.target.files)[0]);
+                $("#upload_box").hide();
+            });
+        }
     }
 });
 
@@ -27,8 +43,9 @@ function loadVis(src) {
     var container = new MultiVis("#visualization-body");
 
     var treeOrder;
+
     var parser = Papa.parse(src, {
-        download: true,
+        download: typeof src == 'string',
         delimiter: "\t",
         worker: false,
         skipEmptyLines: true,
