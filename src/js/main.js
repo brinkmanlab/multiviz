@@ -7,7 +7,8 @@ import Newick from './newick'
 $(document).ready(function() {
     const query = new URLSearchParams(location.search);
     const dataset_id = query.get('dataset_id');
-    const injected_data = document.getElementById('injected_data').textContent;
+    let injected_data = document.getElementById('injected_data').textContent;
+    if (/^\s+$/.test(injected_data)) injected_data = false;
 
     // Allow specifying full src path in query or fall back to galaxy dataset path
     const src = (injected_data && atob(injected_data)) || query.get('src') || (dataset_id && `/datasets/${dataset_id}/display`);

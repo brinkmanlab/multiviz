@@ -32,10 +32,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="make vis input optional">
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="move build to static and symlink to template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/templates/islandcompare.mako" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,9 +119,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.postbuild" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +178,10 @@
       <workItem from="1600125115696" duration="1597000" />
       <workItem from="1607546983990" duration="2937000" />
       <workItem from="1609979282117" duration="1130000" />
-      <workItem from="1610048698843" duration="1606000" />
+      <workItem from="1610048698843" duration="1701000" />
+      <workItem from="1610138287275" duration="14000" />
+      <workItem from="1610510889360" duration="2695000" />
+      <workItem from="1615181066615" duration="4865000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -356,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609980398401</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="move build to static and symlink to template">
+      <created>1610063570255</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1610063570255</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -403,7 +412,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Copy in all old js and css files. Fix data processing." />
     <MESSAGE value="Cast number values to Number when loading viz data" />
     <MESSAGE value="Clean up last bit of casting strings to numbers in viz." />
     <MESSAGE value="Add pseudogene support to viz" />
@@ -428,7 +436,8 @@
     <MESSAGE value="Set style as well as attr for tree using attr" />
     <MESSAGE value="Add upload box" />
     <MESSAGE value="make vis input optional" />
-    <option name="LAST_COMMIT_MESSAGE" value="make vis input optional" />
+    <MESSAGE value="move build to static and symlink to template" />
+    <option name="LAST_COMMIT_MESSAGE" value="move build to static and symlink to template" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
