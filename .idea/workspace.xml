@@ -32,9 +32,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="move build to static and symlink to template">
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Handle blocking all but simple CORS request">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/clustervis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/clustervis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/genomecomparevis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/genomecomparevis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,9 +121,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.postbuild" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +183,7 @@
       <workItem from="1610048698843" duration="1701000" />
       <workItem from="1610138287275" duration="14000" />
       <workItem from="1610510889360" duration="2695000" />
-      <workItem from="1615181066615" duration="4865000" />
+      <workItem from="1615181066615" duration="11243000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -365,7 +367,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610063570255</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Set injected_data with only whitespace to false">
+      <created>1615222565679</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1615222565679</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Handle blocking all but simple CORS request">
+      <created>1615222576877</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1615222576877</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -412,8 +428,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Cast number values to Number when loading viz data" />
-    <MESSAGE value="Clean up last bit of casting strings to numbers in viz." />
     <MESSAGE value="Add pseudogene support to viz" />
     <MESSAGE value="Fix coloring by predictor.&#10;This resolves #169." />
     <MESSAGE value="Remove galaxy, log, and port443 from docker-compose." />
@@ -437,7 +451,9 @@
     <MESSAGE value="Add upload box" />
     <MESSAGE value="make vis input optional" />
     <MESSAGE value="move build to static and symlink to template" />
-    <option name="LAST_COMMIT_MESSAGE" value="move build to static and symlink to template" />
+    <MESSAGE value="Set injected_data with only whitespace to false" />
+    <MESSAGE value="Handle blocking all but simple CORS request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle blocking all but simple CORS request" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

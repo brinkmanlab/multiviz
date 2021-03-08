@@ -802,7 +802,7 @@ export default function MultiVis(targetNode){
         const clusterPage = open();
         const clusterDoc = clusterPage.document;
         clusterPage.createClusterVisualization = ()=>createClusterVisualization(clusterDoc, clusterDict);
-        clusterDoc.write(`<html>${document.head.outerHTML}<body>${document.getElementById('clustervis').innerHTML}<script>window.createClusterVisualization()<\\/script></body></html>`);
+        clusterDoc.write(`<html>${document.head.outerHTML}<body>${document.getElementById('clustervis').innerHTML}<script>window.createClusterVisualization()<\/sc` + `ript></body></html>`);
     };
 
     return this;
