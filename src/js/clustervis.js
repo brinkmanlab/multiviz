@@ -7,15 +7,23 @@ export default function createClusterVisualization(context, clusterDict) {
     var TEXTOFFSET = 15; // Adjustment to align position text with island
     var RECTHEIGHT = 10; // Height of the island rect elements
 
+    var visWidth = $("#visualizationBody", context).width();
+    if (visWidth <= SVGPADDING) {
+        console.warn(`Negative or zero #visualizationBody width: ${visWidth}`);
+        setTimeout(()=>{
+            createClusterVisualization(context, clusterDict)
+        }, 100);
+        return;
+    }
+
     // Create a new root selection from the context object
     const d3_root = d3.select(context.documentElement); //new Selection();
 
     var cluster = clusterDict.cluster;
     $("#header", context).html("Cluster " + cluster);
     var color = clusterDict.color;
-    var visWidth = $("#visualizationBody", context).width();
 
-    var scale = getScale(clusterDict.sequences, visWidth - SVGPADDING - SEQSTART);
+    var scale = getScale(clusterDict.sequences, Math.max(0,visWidth - SVGPADDING - SEQSTART));
 
     // D3.js //
     var seq = d3_root.select("#visualizationBody")
@@ -36,7 +44,7 @@ export default function createClusterVisualization(context, clusterDict) {
         .attr("height", function(seq) {
             return seq.islands.length * SEQPADDING;
         })
-        .attr("width", visWidth - SVGPADDING);
+        .attr("width", Math.max(0, visWidth - SVGPADDING));
 
     var rectGroup = svg.selectAll("g")
         .data(function(seq) {
