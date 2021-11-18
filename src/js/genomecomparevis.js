@@ -773,7 +773,12 @@ export default function MultiVis(targetNode){
         clusterDict.color = color;
         clusterDict.sequences = [];
         // Get all GIs in cluster
-        var cluster = $(".cluster-" + clusterNum);
+        var cluster;
+        if ($("input[name=GIColour]:checked").val() === "similarity") {
+            cluster = $(".cluster-" + clusterNum + ":not(.merged_component)");
+        } else {
+            cluster = $(":not(.merged) > .cluster-" + clusterNum);
+        }
         // For each cluster record ID, start, end
         cluster.each(function() {
             var seqID = $(this).parents(".sequences").attr("sequence");

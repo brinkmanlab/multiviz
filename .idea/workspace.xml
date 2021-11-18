@@ -32,10 +32,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Handle blocking all but simple CORS request">
-      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Ignore postbuild output">
+      <change afterPath="$PROJECT_DIR$/.idea/multiviz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/clustervis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/clustervis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/genomecomparevis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/genomecomparevis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +54,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="pixi" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1R1BEf4DB2b1slYJzCoMh3a9olu" />
@@ -76,6 +83,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
@@ -184,6 +192,8 @@
       <workItem from="1610138287275" duration="14000" />
       <workItem from="1610510889360" duration="2695000" />
       <workItem from="1615181066615" duration="11243000" />
+      <workItem from="1623272331945" duration="1261000" />
+      <workItem from="1637275098210" duration="3045000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -381,7 +391,28 @@
       <option name="project" value="LOCAL" />
       <updated>1615222576877</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fix postbuild">
+      <created>1619048303806</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1619048303806</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fix clustervis">
+      <created>1619048325374</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1619048325374</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Ignore postbuild output">
+      <created>1619048343076</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1619048343076</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -428,9 +459,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Add pseudogene support to viz" />
-    <MESSAGE value="Fix coloring by predictor.&#10;This resolves #169." />
-    <MESSAGE value="Remove galaxy, log, and port443 from docker-compose." />
     <MESSAGE value="Change api redirect to /galaxy prefix in nginx proxy." />
     <MESSAGE value="Fix race condition of getting galaxy cookie" />
     <MESSAGE value="fixup! Add galaxy-workflow-invocation event to JobRunner to trigger the help tab change" />
@@ -453,7 +481,10 @@
     <MESSAGE value="move build to static and symlink to template" />
     <MESSAGE value="Set injected_data with only whitespace to false" />
     <MESSAGE value="Handle blocking all but simple CORS request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handle blocking all but simple CORS request" />
+    <MESSAGE value="Fix postbuild" />
+    <MESSAGE value="Fix clustervis" />
+    <MESSAGE value="Ignore postbuild output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore postbuild output" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/viz.iml" filepath="$PROJECT_DIR$/.idea/viz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/multiviz.iml" filepath="$PROJECT_DIR$/.idea/multiviz.iml" />
     </modules>
   </component>
 </project>
