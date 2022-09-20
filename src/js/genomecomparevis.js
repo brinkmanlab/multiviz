@@ -422,7 +422,10 @@ export default function MultiVis(targetNode){
                         }
                     })
                     .append("title").text(function(gi) {
-                        if(gi.cluster != null) { return "Click to open GI cluster " + gi.cluster + " view"; }
+                        let title = "";
+                        if (gi.query) { title += gi.query + "\n"; }
+                        if(gi.cluster != null) { title += "Click to open GI cluster " + gi.cluster + " view"; }
+                        return title;
                     });
             });
         });
@@ -624,6 +627,11 @@ export default function MultiVis(targetNode){
         } else {
             $(".blast").hide();
         }
+        if ($(".GIColourBody :checkbox[name=curated]").is(":checked")) {
+            $(".curated").show();
+        } else {
+            $(".curated").hide();
+        }
     };
 
     this.GIColourToggle = function() {
@@ -718,9 +726,9 @@ export default function MultiVis(targetNode){
     this.highlightCluster = function(clusterClass) {
         $(clusterClass).attr("filter", "url(#shadow)");
         //$(".sigi, .islandpath").hide();
-        var otherIslands = $("svg .genomicIslands polygon").not(clusterClass);
-        otherIslands.attr("fill-opacity", "0.4");
-        otherIslands.attr("stroke-opacity", "0");
+        //var otherIslands = $("svg .genomicIslands polygon").not(clusterClass);
+        //otherIslands.attr("fill-opacity", "0.4");
+        //otherIslands.attr("stroke-opacity", "0");
         var genes = $(".CDS, .tRNA, .rRNA, .gene");
         genes.attr("fill-opacity", "0.4");
         genes.attr("stroke-opacity", "0");

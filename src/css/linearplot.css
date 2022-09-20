@@ -164,15 +164,19 @@ g.root.node circle{
 }
 
 .islandpath, #islandpathLegend{
-    fill: red !important;
+    fill: #BB410A !important;
 }
 
 .sigi, #sigiLegend{
-    fill: blue !important;
+    fill: #0720C7 !important;
 }
 
 .blast, #blastLegend{
-    fill: #508714 !important;
+    fill: #3AD849 !important;
+}
+
+.curated, #curatedLegend{
+    fill: #BD5DEF !important;
 }
 
 .GIColourBody label{

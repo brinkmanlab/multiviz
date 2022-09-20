@@ -103,6 +103,9 @@ function loadVis(src) {
                         case 'blast':
                             program = 'blast';
                             break;
+                        case 'curated':
+                            program = 'curated';
+                            break;
                         default:
                             program = 'merged';
                             break;
@@ -113,6 +116,8 @@ function loadVis(src) {
                     color = color ? color[1] : null;
                     let parent = /Parent=([^;\n]+)/.exec(row[8]);
                     parent = parent ? parent[1] : null;
+                    let query = /Query=([^|;\n]+)/.exec(row[8]);
+                    query = query ? query[1] : null;
                     sequence = container.backbone.getSequences().find(function (seq) {
                         return seq.sequenceId === row[0];
                     });
@@ -122,7 +127,8 @@ function loadVis(src) {
                         end: row[4],
                         cluster: cluster,
                         color: color,
-                        parent: parent
+                        parent: parent,
+                        query: query,
                     });
                     break;
                 case 'match':
