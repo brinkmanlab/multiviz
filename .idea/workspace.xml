@@ -32,14 +32,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Upgrade packages">
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Clean up README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/linearplot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/linearplot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/genomecomparevis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/genomecomparevis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,20 +65,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="9229" restartOnDisconnect="true">
       <method v="2" />
     </configuration>
@@ -126,8 +120,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.postbuild" />
       </list>
     </recent_temporary>
@@ -193,7 +187,8 @@
       <workItem from="1637275098210" duration="3542000" />
       <workItem from="1637279650163" duration="880000" />
       <workItem from="1637389411340" duration="322000" />
-      <workItem from="1663347599735" duration="6020000" />
+      <workItem from="1663347599735" duration="6720000" />
+      <workItem from="1663735731490" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -426,7 +421,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637279608504</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add curated gis support">
+      <created>1663706578234</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1663706578234</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Clean up README.md">
+      <created>1663706587265</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1663706587265</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -472,8 +481,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! Add galaxy-workflow-invocation event to JobRunner to trigger the help tab change" />
-    <MESSAGE value="Convert all paths to relative" />
     <MESSAGE value="Change galaxy root path for data fetch" />
     <MESSAGE value="Add tips and tweak viz top control bar layout." />
     <MESSAGE value="Add tips and" />
@@ -497,7 +504,9 @@
     <MESSAGE value="Ignore postbuild output" />
     <MESSAGE value="Fix duplicate gis in cluster view" />
     <MESSAGE value="Upgrade packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade packages" />
+    <MESSAGE value="Add curated gis support" />
+    <MESSAGE value="Clean up README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up README.md" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
