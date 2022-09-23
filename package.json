@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build --public-url . --no-source-maps --no-minify src/index.html",
-    "postbuild": "mkdir -p ./galaxy/static/ && cp ./dist/index.html ./galaxy/static/"
+    "postbuild": "mkdir -p ./galaxy/static/ && cp ./dist/index.html ./galaxy/static/ && cp -r ./galaxy ./IslandCompare && tar -caf IslandCompare.tar.gz IslandCompare"
   },
   "dependencies": {
     "blueimp-canvas-to-blob": "^3.14.0",
