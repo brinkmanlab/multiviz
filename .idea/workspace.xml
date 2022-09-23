@@ -32,8 +32,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Clean up README.md">
+    <list default="true" id="af7aef29-7e29-4781-a341-9dc6ba371294" name="Default Changelist" comment="Add packaging logix to postbuild">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/linearplot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/linearplot.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +57,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -121,8 +124,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.postbuild" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +192,10 @@
       <workItem from="1637389411340" duration="322000" />
       <workItem from="1663347599735" duration="6720000" />
       <workItem from="1663735731490" duration="41000" />
+      <workItem from="1663777123184" duration="350000" />
+      <workItem from="1663887021163" duration="6000" />
+      <workItem from="1663887180149" duration="1608000" />
+      <workItem from="1663960323336" duration="537000" />
     </task>
     <task id="LOCAL-00001" summary="Copy in all old js and css files. Fix data processing.">
       <created>1550795619974</created>
@@ -435,7 +442,35 @@
       <option name="project" value="LOCAL" />
       <updated>1663706587265</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Change predictor colors to Tol palette">
+      <created>1663777240358</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1663777240358</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Add text to Tip">
+      <created>1663887459376</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1663887459376</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Lighten predictor colors">
+      <created>1663898175171</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1663898175171</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Add packaging logix to postbuild">
+      <created>1663898662938</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1663898662938</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -481,10 +516,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Change galaxy root path for data fetch" />
-    <MESSAGE value="Add tips and tweak viz top control bar layout." />
-    <MESSAGE value="Add tips and" />
-    <MESSAGE value="Add support for sequence GFF record in viz" />
     <MESSAGE value="Modernize image download code" />
     <MESSAGE value="Fix name collision in switch block" />
     <MESSAGE value="Reorder buttons" />
@@ -506,7 +537,11 @@
     <MESSAGE value="Upgrade packages" />
     <MESSAGE value="Add curated gis support" />
     <MESSAGE value="Clean up README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up README.md" />
+    <MESSAGE value="Change predictor colors to Tol palette" />
+    <MESSAGE value="Add text to Tip" />
+    <MESSAGE value="Lighten predictor colors" />
+    <MESSAGE value="Add packaging logix to postbuild" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add packaging logix to postbuild" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
